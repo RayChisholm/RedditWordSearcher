@@ -2,7 +2,7 @@ import random
 import string
 
 def load_words():
-    with open('C:/Users/ABC/Desktop/Code/Wordsearch/words_alpha.txt') as word_file:
+    with open('C:/Users/rosep/Desktop/Code/Wordsearch/words_alpha.txt') as word_file:
         valid_words = set(word_file.read().split())
     return valid_words
 
@@ -110,19 +110,20 @@ def place_word(board, word):
                     board[r][c] = word[i]
                 placed = True
 
-def fill_empty(board):
+def fill_empty(board, char_list):
     for row in range(len(board)):
         for col in range(len(board)):
             if board[row][col] == '-':
+                #board[row][col] = random.choice(string.ascii_uppercase)
                 board[row][col] = random.choice(list(char_list))
 
-def create_word_search(words):
+def create_word_search(words, char_list):
     board = [['-' for _ in range(13)] for _ in range(13)]
 
     for word in words:
         place_word(board, word)
 
-    fill_empty(board)
+    fill_empty(board,char_list)
 
     return board
 
@@ -140,9 +141,9 @@ if __name__ == '__main__':
     words = limit_letters(words, char_list)
     words = make_upper(words)
 
-    print('Words to find: ' + words)
+    print(words)
 
-    board = create_word_search(words)
+    board = create_word_search(words, char_list)
     display_board(board)
 
     
