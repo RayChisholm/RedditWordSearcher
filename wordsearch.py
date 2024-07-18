@@ -114,7 +114,7 @@ def fill_empty(board):
     for row in range(len(board)):
         for col in range(len(board)):
             if board[row][col] == '-':
-                board[row][col] = random.choice(string.ascii_uppercase)
+                board[row][col] = random.choice(list(char_list))
 
 def create_word_search(words):
     board = [['-' for _ in range(13)] for _ in range(13)]
