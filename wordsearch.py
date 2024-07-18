@@ -135,11 +135,12 @@ if __name__ == '__main__':
     english_words = load_words()
     max_word_length = int(input('Enter maximum word length: '))
     min_word_length = int(input('Enter minimum word length: '))
-    char_list = set(input('Enter the letters you want to use: '))
+    char_list = set(make_upper(input('Enter the letters you want to use: ')))
 
     words = limit_length(english_words, max_word_length, min_word_length)
-    words = limit_letters(words, char_list)
     words = make_upper(words)
+    words = limit_letters(words, char_list)
+    
 
     print(words)
 
